@@ -1,0 +1,5 @@
+Agent 2 v1.0.16 validation
+- 82/82 unittest tests pass.
+- compileall passes.
+- Regression reproduces preferred_content_types=["comparison"] and verifies successful normalization.
+- Regression verifies planner token budget floors at 4096 when config is 1024.

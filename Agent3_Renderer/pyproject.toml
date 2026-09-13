@@ -1,0 +1,5 @@
+[project]
+name = "facelessrc-agent3"
+version = "1.0.0"
+requires-python = ">=3.11"
+description = "Deterministic FFmpeg rough-cut renderer for FacelessRC"

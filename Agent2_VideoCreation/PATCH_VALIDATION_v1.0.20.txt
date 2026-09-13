@@ -1,0 +1,17 @@
+Validation performed in build environment:
+- clean reconstruction of Agent 2 v1.0.19: 96 tests passed
+- v1.0.19 -> v1.0.20 overlay upgrade verification
+- python -m unittest discover -s tests -q: 103 tests passed
+- python -m pytest -q: 103 tests passed
+- python -m compileall -q video_creation_agent: PASS
+- v1.0.19 planner.py SHA-256 unchanged after v1.0.20 adapter
+
+New regression coverage:
+- exact Agent 1 visual_family reuse across different source files is deprioritized
+- repeated editorial_role + subject_focus is softly rotated
+- high-quality/useful profiled footage gets a bounded positive tie-breaker
+- legacy clips receive zero editorial metadata adjustment
+- Editorial Vision diversity metrics are emitted
+- Agent 1 v1.3 metadata is loaded from analysis_json
+- legacy clips load with safe Editorial Vision defaults
+- only profiled clips receive the new embedding-cache namespace

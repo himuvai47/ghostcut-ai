@@ -1,0 +1,15 @@
+Agent 2 v1.0.17 validation
+
+- Python compileall: PASS
+- Full unittest suite: 86/86 PASS
+- Valid contiguous planner ranges remain unchanged: PASS
+- Interior word gap repair: PASS
+- Interior overlap repair: PASS
+- Leading/trailing boundary repair: PASS
+- Non-empty segment guarantee under badly overlapping proposed ranges: PASS
+- v1.0.10 invalid word-id repair compatibility: PASS
+- v1.0.16 tolerant content-label behavior preserved: PASS
+- v1.0.15 editorial modes preserved: PASS
+- v1.0.14 diversity regressions preserved: PASS
+
+No additional model calls are introduced by this patch.

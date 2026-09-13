@@ -1,0 +1,23 @@
+Agent 2 v1.0.15 — Editorial Freedom / Filler Mode
+
+WHY
+Commentary-heavy faceless videos often contain narration that cannot or should not be illustrated literally. Previous versions still spent too much matching pressure on abstract claims even though a human editor would simply use strong same-brand/topic footage.
+
+WHAT CHANGED
+1. Planner emits match_mode: literal / thematic / brand_filler.
+2. Guardrails prevent ordinary brand commentary from becoming needlessly literal.
+3. Context anchors carry the dominant brand/topic through abstract beats.
+4. Thematic matching strips hard sentence-detail constraints and keeps broad topic relevance.
+5. Brand-filler matching is deterministic, unused-first, diversity-aware, and skips Qwen candidate reranking.
+6. Exact literal/thematic failures relax into context-aware same-brand/topic gap filler.
+7. editorial_plan.json exposes planned vs effective requirements and mode counts.
+8. run_summary.json adds editorial mode counts and literal-context-fallback counts.
+9. v1.0.14 visual-diversity protections remain active.
+
+UPGRADE BEHAVIOR
+- Agent 1 index is reused.
+- Audio alignment is reusable.
+- Clip embeddings are reusable.
+- Planner version changed, so visual segmentation/planning runs once on the first v1.0.15 run to assign editorial modes/context anchors.
+- Matching refreshes once because the policy changed.
+- No new model stage was added; brand-filler beats reduce Qwen rerank calls.

@@ -1,0 +1,62 @@
+﻿# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets/local config
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+*.p12
+
+# Runtime data
+GhostCutProjects/
+indexes/
+logs/
+_patch_backups/
+tmp/
+temp/
+cache/
+caches/
+
+# Media
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.mp3
+*.wav
+*.m4a
+*.flac
+
+# Model weights
+*.gguf
+*.safetensors
+*.pt
+*.pth
+*.onnx
+
+# Generated databases/indexes
+*.db
+*.sqlite
+*.sqlite3
+*.jsonl
+
+# OS/editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Local Whisper runtime/model - not stored in Git
+Agent2_VideoCreation/tools/whisper/models/*.bin
+Agent2_VideoCreation/tools/whisper/bin/ggml-cuda.dll

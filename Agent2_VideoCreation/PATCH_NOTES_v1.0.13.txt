@@ -1,0 +1,18 @@
+FacelessRC Agent 2 v1.0.13 — Deterministic Coverage Completion
+
+Why this patch exists
+---------------------
+v1.0.12 correctly produced 34 diverse long-form visual beats, 52 unique clips and zero repeats, but one segment (vs_0027) still left 4.47 seconds uncovered. The broad gap filler intentionally asked Qwen about only two candidates for speed. If those first two candidates were rejected or were too short to legally cover the remainder under the 3-second minimum-cut rule, matching stopped even when hundreds of unused clips remained.
+
+What changed
+------------
+1. Qwen broad-gap judging remains capped at two candidates.
+2. After those two, Agent 2 can scan up to 64 already-ranked local candidates without another model call.
+3. It prefers an unused face-safe clip that can finish the whole remainder in one legal 3–8 second cut.
+4. If one clip cannot finish it, it can use multiple legal unused cuts while avoiding sub-3-second leftovers.
+5. The existing broad relevance threshold is used first; an emergency lower threshold is allowed only when necessary to avoid a legal uncovered span.
+6. Existing long-form pacing, beat-specific semantics, diversity/repeat protection, face policy and cached embeddings remain unchanged.
+
+Expected effect on the user's project
+-------------------------------------
+The exact vs_0027 4.47-second uncovered remainder should be filled with unused broadly related watch B-roll. Visual segments and the 436 cached clip embeddings remain reusable. Matching refreshes once because the matching policy version changed.

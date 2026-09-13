@@ -1,0 +1,20 @@
+FacelessRC Agent 2 v1.0.17 — Planner Range Repair
+
+Fixes a long-form planning failure introduced/exposed by richer editorial planning:
+  ValueError: Planner ranges are not contiguous/ordered
+
+Changes:
+- Keeps Qwen's segment order, requested visuals, entities, and editorial match modes.
+- Deterministically stitches planner word ranges into exact contiguous script coverage.
+- Repairs interior gaps and overlaps without an extra Qwen call.
+- Anchors the first segment to the first aligned script word.
+- Anchors the final segment to the final aligned script word.
+- Guarantees every repaired segment owns at least one aligned word.
+- Existing v1.0.16 tolerant soft-label handling and 4096 planner token floor are preserved.
+- Existing v1.0.15 Editorial Freedom/Filler Mode and v1.0.14 diversity policy are preserved.
+
+Planner version:
+  planner-v11-editorial-range-repair
+
+Runtime:
+  1.0.17

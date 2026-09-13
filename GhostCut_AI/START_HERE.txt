@@ -1,0 +1,31 @@
+GhostCut AI v1.0.1
+
+GHOSTCUT AI v1.0.0
+==================
+
+1) Extract this folder to:
+   D:\AI\FacelessRC\GhostCut_AI
+
+2) PowerShell:
+   cd "D:\AI\FacelessRC\GhostCut_AI"
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+   .\SETUP_WINDOWS.ps1
+
+3) Check:
+   .\CHECK_GHOSTCUT.ps1
+
+4) Launch:
+   .\RUN_GHOSTCUT.ps1
+
+GhostCut opens locally in your default browser at:
+http://127.0.0.1:8765
+
+Default agent folders expected next to GhostCut_AI:
+- D:\AI\FacelessRC\Agent1_Indexing
+- D:\AI\FacelessRC\Agent2_VideoCreation
+- D:\AI\FacelessRC\Agent3_Renderer
+
+If your paths differ, open Settings in the UI and browse to each folder.
+
+
+NEW IN v1.0.1: Open any saved project and choose View Pipeline. You can rerun Agent 1, Agent 2, or Agent 3 independently, run from Agent 2, or rerun the full pipeline. Upstream reruns mark downstream stages stale automatically.

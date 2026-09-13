@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+workspace/
+tools/whisper/bin/*
+!tools/whisper/bin/.gitkeep
+tools/whisper/models/*.bin

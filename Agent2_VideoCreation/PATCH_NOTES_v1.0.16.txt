@@ -1,0 +1,11 @@
+Agent 2 v1.0.16 — Tolerant Editorial Planner Hotfix
+
+Fixes a real v1.0.15 long-form planner failure where Qwen returned a sensible soft label such as "comparison" in preferred_content_types but the old closed enum rejected the whole response.
+
+Changes:
+- preferred_shot_types / preferred_content_types are tolerant soft-label arrays at the structured-output boundary.
+- Planner normalizes common aliases into Agent 2's supported taxonomy and safely drops unknown soft labels.
+- "comparison" normalizes to product_closeup + product_detail rather than crashing.
+- Long-form planner gets a 4096-token minimum output budget even if local qwen_num_predict is configured lower.
+- Editorial Freedom behavior from v1.0.15 is preserved.
+- Matching policy remains unchanged; visual planning refreshes once due to the planner-version bump.

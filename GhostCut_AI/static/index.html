@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>GhostCut AI</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<canvas id="ghostCanvas"></canvas>
+<div class="noise"></div>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand" data-nav="dashboard">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><path d="M32 5C17.64 5 8 15.03 8 29.4V55l8.1-5.55L24 55l8-5.55L40 55l7.9-5.55L56 55V29.4C56 15.03 46.36 5 32 5Zm-8 24.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Zm16 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Z"/><path class="cut" d="M13 44 51 18"/></svg>
+      </div>
+      <div><strong>GhostCut</strong><span>AI</span></div>
+    </div>
+    <nav>
+      <button class="nav-item active" data-nav="dashboard"><i>◈</i><span>Dashboard</span></button>
+      <button class="nav-item" data-nav="new"><i>＋</i><span>New Project</span></button>
+      <button class="nav-item" data-nav="projects"><i>▱</i><span>Projects</span></button>
+      <button class="nav-item" data-nav="libraries"><i>⌘</i><span>Libraries</span></button>
+      <button class="nav-item" data-nav="settings"><i>⚙</i><span>Settings</span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="engine-card" id="engineMini"><span class="pulse-dot"></span><div><small>ENGINE</small><strong>Checking…</strong></div></div>
+      <div class="version">GhostCut AI <span id="appVersion">v1.0.0</span></div>
+    </div>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <div>
+        <span class="eyebrow">AUTONOMOUS LOCAL VIDEO ENGINE</span>
+        <h1 id="pageTitle">Command Center</h1>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" id="refreshBtn" title="Refresh">↻</button>
+        <div class="status-pill" id="healthPill"><span></span> Checking engine</div>
+        <button class="primary compact" data-nav="new">＋ New Project</button>
+      </div>
+    </header>
+
+    <section id="view-dashboard" class="view active">
+      <div class="hero-panel glass">
+        <div class="hero-copy">
+          <div class="badge"><span></span> GHOST ENGINE ONLINE</div>
+          <h2>From narration to <em>rough cut.</em><br/>One autonomous run.</h2>
+          <p>GhostCut AI coordinates footage indexing, semantic matching, and rendering entirely on your machine.</p>
+          <div class="hero-actions">
+            <button class="primary big" data-nav="new">Create Rough Cut <b>→</b></button>
+            <button class="ghost-btn" data-nav="projects">View Projects</button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="orb"><div class="orb-core"></div><div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div></div>
+          <div class="signal-card s1"><small>INDEX</small><strong>Semantic footage</strong><span>Agent 1</span></div>
+          <div class="signal-card s2"><small>MATCH</small><strong>Visual intelligence</strong><span>Agent 2</span></div>
+          <div class="signal-card s3"><small>RENDER</small><strong>Rough cut</strong><span>Agent 3</span></div>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card glass"><span class="stat-icon">◫</span><div><small>PROJECTS</small><strong id="statProjects">0</strong><p>Saved locally</p></div></div>
+        <div class="stat-card glass"><span class="stat-icon">⌘</span><div><small>LIBRARIES</small><strong id="statLibraries">0</strong><p>Indexed footage</p></div></div>
+        <div class="stat-card glass"><span class="stat-icon">⚡</span><div><small>PIPELINE</small><strong>3</strong><p>Autonomous agents</p></div></div>
+        <div class="stat-card glass"><span class="stat-icon">◉</span><div><small>PROCESSING</small><strong>LOCAL</strong><p>No cloud required</p></div></div>
+      </div>
+      <div class="dashboard-grid">
+        <div class="panel glass">
+          <div class="panel-head"><div><span class="eyebrow">RECENT</span><h3>Projects</h3></div><button class="text-btn" data-nav="projects">View all →</button></div>
+          <div id="recentProjects" class="project-list empty-state">No projects yet.</div>
+        </div>
+        <div class="panel glass system-panel">
+          <div class="panel-head"><div><span class="eyebrow">SYSTEM</span><h3>Engine Health</h3></div><span class="live-dot">LIVE</span></div>
+          <div id="healthGrid" class="health-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-new" class="view">
+      <div class="section-intro"><div><span class="eyebrow">NEW SEQUENCE</span><h2>Build a rough cut</h2><p>Choose the narration and footage source. GhostCut handles the rest.</p></div><div class="flow-mini"><span>INPUT</span><b>→</b><span>INDEX</span><b>→</b><span>MATCH</span><b>→</b><span>RENDER</span></div></div>
+      <div class="create-layout">
+        <form id="projectForm" class="form-card glass">
+          <div class="field"><label>Project name</label><div class="input-wrap"><span>◆</span><input id="projectName" placeholder="e.g. Mechanical Watch Story" required /></div></div>
+          <div class="field"><label>Script</label><div class="path-picker"><div><small>TEXT / SCRIPT</small><strong id="scriptDisplay">Choose your script file</strong><span id="scriptPath"></span></div><button type="button" class="browse" data-pick="script">Browse</button></div></div>
+          <div class="field"><label>Voiceover</label><div class="path-picker"><div><small>AUDIO / NARRATION</small><strong id="audioDisplay">Choose your voiceover</strong><span id="audioPath"></span></div><button type="button" class="browse" data-pick="audio">Browse</button></div></div>
+          <div class="field"><label>Footage source</label>
+            <div class="mode-toggle"><button type="button" class="mode active" data-mode="existing"><span>⌘</span><div><strong>Indexed Library</strong><small>Fastest — reuse Agent 1</small></div></button><button type="button" class="mode" data-mode="new"><span>＋</span><div><strong>New Footage</strong><small>Index automatically first</small></div></button></div>
+          </div>
+          <div id="existingLibraryBox" class="field"><label>Library</label><select id="librarySelect"><option value="">Select an indexed library…</option></select><div id="libraryHint" class="hint"></div></div>
+          <div id="newFootageBox" class="field hidden"><label>Footage folder</label><div class="path-picker"><div><small>SOURCE FOOTAGE</small><strong id="footageDisplay">Choose a video folder</strong><span id="footagePath"></span></div><button type="button" class="browse" data-pick="footage">Browse</button></div></div>
+          <div class="run-preview"><div><span class="ready-icon">◉</span><div><strong>Autonomous pipeline</strong><small>GhostCut will resume cached work automatically if you rerun.</small></div></div><div class="agent-dots"><span>1</span><i></i><span>2</span><i></i><span>3</span></div></div>
+          <button type="submit" class="primary launch">CREATE ROUGH CUT <b>→</b></button>
+          <div id="formError" class="form-error"></div>
+        </form>
+        <div class="side-stack">
+          <div class="panel glass"><span class="eyebrow">PIPELINE</span><h3>What GhostCut will do</h3><div class="pipeline-explain"><div><span>01</span><p><strong>Prepare footage</strong><small>Reuse an index or build one automatically.</small></p></div><div><span>02</span><p><strong>Match visuals</strong><small>Agent 2 maps narration to relevant B-roll.</small></p></div><div><span>03</span><p><strong>Render sequence</strong><small>Agent 3 produces the synchronized rough cut.</small></p></div></div></div>
+          <div class="panel glass tip-card"><div class="ghost-small">◈</div><div><span class="eyebrow">GHOST TIP</span><h3>Reuse libraries.</h3><p>The expensive indexing work only needs to happen once. Every future edit can search the same semantic footage library.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-run" class="view">
+      <div class="run-header"><div><span class="eyebrow">PROJECT PIPELINE</span><h2 id="runProjectName">Project</h2><p id="runMessage">Preparing…</p></div><div class="run-actions"><span id="elapsed" class="mono">—</span><button id="cancelBtn" class="danger-btn">Cancel</button></div></div>
+      <div class="pipeline-command-bar glass">
+        <div><span class="eyebrow">PIPELINE CONTROLS</span><strong>Re-run only what changed.</strong></div>
+        <div class="pipeline-command-actions"><button id="pipelinePreviewBtn" class="ghost-btn">Preview Video</button><button id="pipelineFolderBtn" class="ghost-btn">Open Folder</button><button id="runFromAgent2Btn" class="ghost-btn">Run From Agent 2</button><button id="runFullBtn" class="primary">Run Entire Pipeline</button></div>
+      </div>
+      <div class="progress-shell glass"><div class="progress-top"><span id="progressStage">Preparing project</span><strong id="progressPct">0%</strong></div><div class="progress-track"><div id="progressBar"></div><div class="progress-glow"></div></div><div class="stage-rail" id="stageRail"></div></div>
+      <div class="run-grid">
+        <div class="panel glass process-panel"><div class="panel-head"><div><span class="eyebrow">SEQUENCE</span><h3>Pipeline activity</h3></div><span id="pipelineStateChip" class="pulse-chip"><i></i> READY</span></div><div id="pipelineStages" class="pipeline-stages"></div></div>
+        <div class="panel glass log-panel"><div class="panel-head"><div><span class="eyebrow">ADVANCED</span><h3>Live logs</h3></div><button id="copyLogs" class="text-btn">Copy</button></div><pre id="liveLogs">Waiting for engine…</pre></div>
+      </div>
+    </section>
+
+    <section id="view-result" class="view">
+      <div class="result-hero glass"><div class="success-ring">✓</div><div><span class="eyebrow success-text">SEQUENCE COMPLETE</span><h2>Your rough cut is ready.</h2><p id="resultSubtitle">GhostCut AI completed the pipeline successfully.</p></div><div class="result-actions"><button id="viewPipelineBtn" class="ghost-btn">View Pipeline</button><button id="openVideoBtn" class="primary">Open Video</button><button id="openFolderBtn" class="ghost-btn">Open Folder</button></div></div>
+      <div class="result-grid">
+        <div class="video-card glass"><video id="previewVideo" controls preload="metadata"></video><div class="video-overlay"><span>GHOSTCUT OUTPUT</span></div></div>
+        <div class="result-side"><div class="panel glass"><span class="eyebrow">PROJECT</span><h3 id="resultProjectName">—</h3><div class="detail-list" id="resultDetails"></div></div><button class="primary big full" data-nav="new">Create Another Cut <b>→</b></button></div>
+      </div>
+    </section>
+
+    <section id="view-projects" class="view"><div class="section-intro"><div><span class="eyebrow">ARCHIVE</span><h2>Projects</h2><p>Every GhostCut run, saved locally.</p></div><button class="primary" data-nav="new">＋ New Project</button></div><div id="projectsGrid" class="cards-grid"></div></section>
+    <section id="view-libraries" class="view"><div class="section-intro"><div><span class="eyebrow">SEMANTIC MEMORY</span><h2>Footage Libraries</h2><p>Reusable Agent 1 indexes available to every project.</p></div><button id="refreshLibraries" class="ghost-btn">Refresh</button></div><div id="librariesGrid" class="cards-grid"></div></section>
+    <section id="view-settings" class="view"><div class="section-intro"><div><span class="eyebrow">ENGINE CONFIG</span><h2>Settings</h2><p>Paths and services used by the local GhostCut engine.</p></div></div><form id="settingsForm" class="settings-card glass"><div id="settingsFields"></div><button class="primary" type="submit">Save Settings</button><span id="settingsStatus"></span></form></section>
+  </main>
+</div>
+<div id="toast" class="toast"></div>
+<script src="/app.js"></script>
+</body>
+</html>

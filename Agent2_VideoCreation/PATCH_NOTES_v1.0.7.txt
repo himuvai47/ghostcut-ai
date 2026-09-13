@@ -1,0 +1,20 @@
+FacelessRC Agent 2 v1.0.7 — Fast Relevance-First Matching
+
+Why this patch exists:
+- v1.0.6 was too literal about fine narration details and could rematch otherwise useful faceless B-roll.
+- v1.0.6 could also spend too long on repeated Qwen3.5 ranking/review calls.
+
+Changes:
+1. General visual relevance is enough for normal faceless B-roll.
+2. Fine details such as color, hour markers, texture, finishing, exact component motion, framing and camera motion are soft preferences only.
+3. Hard rejection is reserved for clearly wrong required named products/entities or plainly unrelated main subjects.
+4. Qwen3.5 candidate reranking uses thinking disabled and starts with only the best 2 candidates; it widens only when needed.
+5. Global editorial review is risk-only: it runs only when a weak match or a repeated clip is selected.
+6. Multi-product narration still supports separate sequential clips for each named product.
+7. Agent 1 face metadata policy, max-two-use rule, unused-before-repeat rule, Whisper timing, embeddings and timeline contract remain intact.
+
+Cache/resume behavior:
+- Planner version changes once, so visual_segments.json refreshes on the next run.
+- Matching policy/reranker version changes, so matching refreshes once.
+- Whisper alignment remains reusable.
+- Existing clip embeddings remain reusable.

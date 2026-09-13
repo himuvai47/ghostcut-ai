@@ -1,0 +1,13 @@
+FacelessRC Agent 2 v1.0.8 — 3–8 Second Pacing Patch
+
+Changes:
+- Normal selected cuts are at least 3.0 seconds and at most 8.0 seconds.
+- Clips shorter than 3 seconds are excluded from normal matching.
+- Within the same match level, longer relevant clips are preferred.
+- Deterministic pacing prevents tiny tail cuts under 3 seconds by rebalancing prior cuts.
+- Planner merges sub-3-second visual units with a neighboring unit when possible.
+- Multi-entity collective selection only activates when there is enough time for one legal 3-second cut per entity.
+- QC validates min/max cut duration.
+
+This changes planning/matching policy, so visual_segments + matching refresh once.
+Whisper alignment and cached footage embeddings remain reusable.

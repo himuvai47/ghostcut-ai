@@ -1,0 +1,14 @@
+Agent 2 v1.0.18 - Long-Form Planner Guardrail
+
+Why:
+- v1.0.17 could repair tiny range gaps, but a partial long-form planner response could start hundreds of words late and be stretched backward across the missing narration.
+- Generic CTA/narration phrases could become context anchors (for example "Tell me" or "luxury counter").
+- QC failures were not printed in the main job log.
+
+Changes:
+1. Long scripts (>=320 aligned words) are planned in focused ~190-word sentence-aware chunks.
+2. Range repair is limited to small mechanical boundary defects. Massive missing prefixes/suffixes or large gaps/overlaps are never silently stretched.
+3. Malformed planner chunks are recursively split. A small chunk that still fails falls back to safe brand/topic filler rather than aborting the whole rough cut.
+4. Generic CTA/context phrases cannot replace the stable brand/topic anchor.
+5. QC issues are now written into run_summary.json and printed to the Agent 2 log when QC fails.
+6. Editorial Freedom / Filler Mode and v1.0.14 diversity behavior are preserved.

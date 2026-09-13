@@ -1,0 +1,35 @@
+FacelessRC Agent 2 v1.0.11 — Long-form Diversity / Faceless Pacing
+
+Problem fixed
+-------------
+Long scripts could be planned as only a handful of huge visual ideas. On a ~4 minute
+video this could leave one shot/freeze visible for tens of seconds and encourage repeat
+footage, even when hundreds of unused indexed clips were available.
+
+Behavior
+--------
+- Qwen still decides semantic visual ideas.
+- A deterministic pacing pass then splits oversized ideas into roughly 8-second beats,
+  with a 10-second visual-segment ceiling and exact contiguous word coverage.
+- The existing source-cut rule remains 3-8 seconds.
+- Exact product/entity footage is tried first.
+- If exact matching cannot cover the beat, Agent 2 relaxes the entity requirement and
+  accepts broadly related unused topical B-roll from the curated library.
+- If the fast reranker remains too literal, the top unused topical retrieval candidate
+  can be accepted as an editorial diversity rescue instead of repeating/freezing.
+- Repeats are blocked while at least 12 legal unused clips remain in the library.
+- Matched timeline gaps >0.10s now fail Agent 2 QC so Agent 3 cannot silently hide an
+  editorial failure with a long freeze.
+- Long-form malformed word-ID repair from v1.0.10 remains enabled.
+
+Expected effect on the reported ~4:19 project
+----------------------------------------------
+A Qwen plan of only 8 large semantic ideas will typically become roughly 30-35 paced
+visual beats before matching. With 436 face-safe indexed clips, the matcher should favor
+unique related footage and should rarely need repeats.
+
+Cache behavior
+--------------
+- Whisper alignment is reusable.
+- Existing clip embeddings are reusable.
+- Visual segments and matching intentionally rebuild once because planner/match policy changed.

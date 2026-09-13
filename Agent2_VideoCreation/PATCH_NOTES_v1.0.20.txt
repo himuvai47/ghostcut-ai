@@ -1,0 +1,29 @@
+Agent 2 v1.0.20 — Editorial Vision Adapter
+
+Built directly on the frozen v1.0.19 Compact Editorial Planner. The planner itself is unchanged.
+
+What changes
+- Reads Agent 1 v1.3 Editorial Vision fields when present:
+  brand, model_name, subject_focus, shot_angle, editorial_role, visual_energy,
+  lighting_style, composition, visual_family, visual_quality_score,
+  editorial_usefulness_score, editorial_profile_version.
+- Legacy Agent 1 v1.2.x clips remain fully supported with zero editorial metadata bonus/penalty.
+- Exact visual_family reuse receives a strong diversity penalty, even across different source files.
+- Repeated editorial_role + subject_focus receives a softer rotation penalty.
+- High-quality/useful v1.3 footage receives a small positive tie-breaker, never a relevance-gate bypass.
+- Brand/model metadata strengthens context-anchor matching.
+- Retrieval embeddings include Editorial Vision metadata for profiled clips.
+- Only profiled clips use a new embedding cache namespace; legacy cached embeddings are preserved.
+- Timeline/retrieval diagnostics expose the new metadata and Editorial Vision reasons.
+- Run summary adds:
+  agent1_editorial_profile_eligible
+  agent1_editorial_profile_clips_used
+  unique_visual_families_used
+  visual_family_reuses
+  same_editorial_role_focus_consecutive
+
+Compatibility
+- Agent 2 v1.0.19 planner behavior is frozen and preserved.
+- Partial Agent 1 v1.3 backfills are supported. You do not need to upgrade all clips first.
+- Agent 3 timeline compatibility is preserved; new timeline clip fields are additive only.
+- No new Qwen/vision calls are introduced by the adapter.

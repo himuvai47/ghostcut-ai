@@ -1,0 +1,26 @@
+FacelessRC Agent 1 v1.0.0 build validation
+
+Validated before packaging:
+- Python compileall: PASS
+- Unit tests: 9/9 PASS
+- Structured multi-image Ollama request mock: PASS
+- SQLite round-trip: PASS
+- FFmpeg/FFprobe synthetic-video smoke test: PASS
+- Physical shot detection on 3-scene synthetic source: 3/3 shots detected
+- Representative-frame extraction: PASS
+- End-to-end mock vision indexing: 3/3 clips indexed
+- JSONL export: PASS
+- QC report: PASS
+- Unchanged-source resume/skip: PASS
+- --no-ai deterministic mode exits successfully and preserves resumable state: PASS
+
+The real Qwen2.5-VL model call cannot be executed in the packaging environment because your local Ollama/GPU are on your Windows PC. The HTTP request format is covered by the mock test and follows Ollama's local /api/chat image + JSON-schema interface.
+
+Patch v1.0.1:
+- Fixed PowerShell RUN_AGENT1.ps1 parameter collision with the built-in -Verbose common parameter.
+- Python compile check passed after patch.
+- Unit tests: 9/9 passed after patch.
+
+Patch v1.0.2:
+- Removed legacy -vsync vfr from scene-detection FFmpeg command for compatibility with builds where -vsync is unavailable.
+- Scene timestamps continue to come from select+showinfo before output synchronization.

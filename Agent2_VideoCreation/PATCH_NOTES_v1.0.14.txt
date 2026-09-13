@@ -1,0 +1,22 @@
+Agent 2 v1.0.14 — Visual Diversity / Near-Duplicate Avoidance
+
+Purpose
+- Prevent visually repeated footage that uses different Agent-1 clip IDs.
+- Rotate source videos more naturally during long-form faceless edits.
+- Preserve v1.0.13 coverage completion, 3-8 second pacing, unused-first matching and face policy.
+
+New behavior
+- Penalizes same-source reuse in adjacent/recent beats.
+- Strongly deprioritizes clips from already-used nearby source-time regions (default 20s).
+- Uses cached clip embeddings + shot/content type to identify near-identical visuals across different source files.
+- Adds a mild source-balance penalty so one source video does not dominate when equally relevant alternatives exist.
+- Near-duplicates are moved behind diverse alternatives when at least 6 diverse candidates are available.
+- Strict/high-specificity named-product beats retain relevance priority.
+- Adds visual-diversity diagnostics to timeline.json, qc_report.json and run_summary.json.
+- Adds no new model calls and does not rebuild Agent-1 indexes or clip embeddings.
+
+Expected upgrade behavior
+- Whisper alignment: reused.
+- Visual segments: reused.
+- Clip embeddings: reused.
+- Matching: refreshed once because MATCH_POLICY_VERSION changes.

@@ -1,0 +1,23 @@
+FACELESSRC AGENT 1 — START HERE
+
+1) Extract this ZIP into:
+   D:\AI\FacelessRC
+
+2) You should then have:
+   D:\AI\FacelessRC\Agent1_Indexing
+
+3) Open PowerShell and run:
+   cd "D:\AI\FacelessRC\Agent1_Indexing"
+   Set-ExecutionPolicy -Scope Process Bypass
+   .\SETUP_WINDOWS.ps1
+
+4) If needed:
+   ollama pull qwen2.5vl:7b
+
+5) Verify:
+   .\CHECK_AGENT1.ps1
+
+6) First test with ONE short video:
+   .\RUN_AGENT1.ps1 -InputPath "D:\Footage\watch.mp4" -Workspace "D:\AI\FacelessRC\indexes\watch_test"
+
+Read README.md for the full workflow.

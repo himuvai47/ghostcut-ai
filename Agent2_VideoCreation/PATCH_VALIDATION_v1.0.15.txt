@@ -1,0 +1,5 @@
+Agent 2 v1.0.15 validation
+- Full reconstructed v1.0.14 -> v1.0.15 tree: 79 tests pass
+- Existing v1.0.0-v1.0.14 regression tests preserved
+- New editorial freedom tests cover mode normalization, context anchors, exact detail preservation, filler constraint relaxation, deterministic same-brand filler selection, and planner mode persistence
+- compileall passes

@@ -1,0 +1,17 @@
+FacelessRC Agent 2 v1.0.6 — Semantic Planning / Multi-Entity Coverage
+
+Fixes observed in the real 30-second benchmark:
+1. Planner over-specification: camera/framing words such as macro, close-up, static, pan, zoom and split-view are no longer hard semantic requirements.
+2. Mechanical-watch narration can match real visible movement/components without requiring an invented macro/X-ray style.
+3. Multi-product narration can be covered by multiple sequential clips. A G-Shock clip plus an Apple Watch clip can collectively satisfy one comparison segment.
+4. Global editorial review evaluates selected clips collectively and respects per-clip coverage_entity tags.
+
+No changes to:
+- Agent 1 face metadata policy
+- max 2 uses per semantic clip
+- unused-before-repeat policy
+- Whisper timing/alignment
+- embedding model/cache format
+- rendering (still Phase 3)
+
+Planner version changes to planner-v3-semantic-coverage, so visual_segments.json and matching refresh once on the next run. Whisper alignment and cached clip embeddings remain reusable.

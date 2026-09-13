@@ -1,0 +1,33 @@
+{
+  "ollama_url": "http://127.0.0.1:11434",
+  "vision_model": "qwen2.5vl:7b",
+  "ollama_timeout_sec": 600,
+  "ollama_keep_alive": "5m",
+  "ollama_num_ctx": 8192,
+  "ollama_num_predict": 3072,
+  "model_retries": 3,
+  "retry_image_cap": 3,
+  "final_retry_image_cap": 2,
+
+  "fingerprint_mode": "sampled",
+  "scene_threshold": 0.32,
+  "min_shot_sec": 0.60,
+
+  "min_semantic_clip_sec": 2.25,
+  "max_semantic_clip_sec": 12.0,
+  "semantic_probe_interval_sec": 1.25,
+  "semantic_diff_threshold": 0.13,
+  "semantic_adaptive_margin": 0.045,
+  "semantic_min_boundary_spacing_sec": 4.0,
+  "semantic_merge_diff_threshold": 0.075,
+  "semantic_extra_split_allowance": 2,
+
+  "frame_edge_pad_sec": 0.15,
+  "frame_max_width": 1280,
+  "short_clip_frame_count": 2,
+  "normal_clip_frame_count": 3,
+  "long_clip_frame_count": 4,
+  "very_long_clip_frame_count": 5,
+
+  "skip_nearly_black_clips": true
+}

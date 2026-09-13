@@ -1,0 +1,14 @@
+FacelessRC Agent 2 v1.0.10 — Long-form Planner Word-ID Repair
+
+Fixes a failure seen on longer scripts where Qwen returns a planner start_word_id or
+end_word_id that is not an exact member of Whisper's aligned word-id list.
+
+Behavior:
+- Normalizes harmless id variants such as w123 / word_123 / missing zero padding.
+- If a start id is truly invalid, repairs it to the deterministic next contiguous word.
+- If an end id is invalid, derives it from the next valid segment start; the final
+  segment safely ends at the final aligned script word.
+- Does NOT repair valid-but-gapped or overlapping ranges. Those still fail validation.
+- No extra Qwen call is added for repair, so the fix does not add runtime cost.
+- Planner version is bumped so a failed/stale visual plan is rebuilt once.
+- Whisper alignment and footage embeddings remain reusable.

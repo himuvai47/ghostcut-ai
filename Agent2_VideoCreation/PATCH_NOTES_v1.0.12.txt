@@ -1,0 +1,24 @@
+FacelessRC Agent 2 v1.0.12 — Beat-Specific Long-form Matching
+
+Why this patch exists
+---------------------
+v1.0.11 fixed long holds and repeats, but an oversized Qwen semantic idea could be split into many 6-10 second beats that all inherited the same parent requested_visual. A 4-minute project therefore produced 34 paced segments but vs_0001..vs_0024 all searched for the same "split screen / side-by-side comparison" concept.
+
+What changed
+------------
+1. Every deterministic child beat gets a fresh narration-specific retrieval target.
+2. Parent hard entities are copied only when that exact named entity appears in the child narration.
+3. Generic roles/concepts (buyers, presenters, collectors/community, graphics/charts/overlays/certification text, etc.) are soft and never copied as hard entities.
+4. Split-screen / side-by-side production language is stripped from semantic footage requests.
+5. Weak-but-related faceless B-roll no longer triggers global review.
+6. Global review is now reserved for actual repeated clips and receives only the repeated/risky segments, preventing unrelated rematches elsewhere in the edit.
+7. Existing 3-8 second cuts, ~8 second target / 10 second segment ceiling, unused-first diversity, face metadata, broad gap-fill and cache behavior remain intact.
+
+Expected effect on the user's 4-minute project
+----------------------------------------------
+- roughly the same 30-40 paced visual beats,
+- each beat searches using its own narration instead of one repeated visual prompt,
+- more semantically varied footage selection,
+- no strict "visible buyer/presenter/graphic" requirement,
+- no global-rematch QC failure caused by a weak-but-related B-roll choice,
+- 436 existing clip embeddings remain reusable.

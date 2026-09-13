@@ -1,0 +1,2 @@
+# Agent 2 core intentionally uses Python's standard library only.
+# Local AI is accessed through Ollama HTTP; speech timing uses whisper.cpp executable.

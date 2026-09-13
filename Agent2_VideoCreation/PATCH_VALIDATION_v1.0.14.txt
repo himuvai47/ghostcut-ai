@@ -1,0 +1,9 @@
+Agent 2 v1.0.14 validation
+- Python compileall: PASS
+- Full unittest suite: 73/73 PASS
+- v1.0.14 regressions include:
+  * same-source nearby scene deprioritization
+  * cross-file embedding near-duplicate detection
+  * source balancing under a small relevance difference
+  * visual-diversity metrics
+- Existing v1.0.13 coverage-completion regressions remain green.

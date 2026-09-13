@@ -1,0 +1,22 @@
+FACELESSRC AGENT 3 v1.0.0 — START HERE
+
+1) Extract this folder to:
+   D:\AI\FacelessRC\Agent3_Renderer
+
+2) Open PowerShell:
+   cd "D:\AI\FacelessRC\Agent3_Renderer"
+
+3) Setup once:
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+   .\SETUP_WINDOWS.ps1
+
+4) Check:
+   .\CHECK_AGENT3.ps1
+
+5) Render your current Agent 2 test:
+   .\RUN_AGENT3.ps1 `
+     -TimelinePath "D:\AI\FacelessRC\projects\agent2_test_output\timeline.json" `
+     -Workspace "D:\AI\FacelessRC\projects\agent3_test_output"
+
+Output:
+   D:\AI\FacelessRC\projects\agent3_test_output\rough_cut.mp4

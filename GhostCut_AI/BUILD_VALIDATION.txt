@@ -1,0 +1,16 @@
+GhostCut AI v1.0.0 build validation
+
+PASS - Python source compileall
+PASS - Frontend JavaScript syntax (Node --check)
+PASS - 13/13 pytest tests
+PASS - Existing-library autonomous flow: Agent 1 skipped, Agent 2 -> Agent 3
+PASS - New-footage autonomous flow: Agent 1 -> Agent 2 -> Agent 3
+PASS - Stale index flow: automatic Agent 1 FaceBackfill -> Agent 2 -> Agent 3
+PASS - Project input copy + persistent project.json
+PASS - Agent 1 face metadata detection (v2 ready / v1 stale / legacy schema missing)
+PASS - Library stats discovery
+PASS - FastAPI meta + static HTML/CSS/JS serving smoke test
+PASS - Chromium static visual render smoke test
+PASS - Windows native dialog implementation uses PowerShell STA + WinForms
+
+Validated in build environment. Actual Agent 1/2/3 execution on Windows depends on the user's installed agents and local model/runtime state; GhostCut validates these at startup via CHECK_GHOSTCUT.ps1 and the UI health panel.

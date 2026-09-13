@@ -1,0 +1,32 @@
+﻿{
+    "release_name":  "GhostCut V1 Stable",
+    "release_version":  "1.0.0",
+    "frozen_utc":  "2026-09-13T18:59:18.4640482Z",
+    "components":  [
+                       {
+                           "name":  "GhostCut_AI",
+                           "version":  "1.0.3",
+                           "role":  "UI / Orchestrator"
+                       },
+                       {
+                           "name":  "Agent1_Indexing",
+                           "version":  "1.3.0",
+                           "role":  "Footage Indexing / Editorial Vision"
+                       },
+                       {
+                           "name":  "Agent2_VideoCreation",
+                           "version":  "1.0.20",
+                           "role":  "Editorial Matching / Timeline"
+                       },
+                       {
+                           "name":  "Agent3_Renderer",
+                           "version":  "1.0.0",
+                           "role":  "FFmpeg Renderer"
+                       }
+                   ],
+    "notes":  [
+                  "Agent 2 v1.0.20 preserves the frozen v1.0.19 compact planner core.",
+                  "Agent 1 v1.3 metadata is optional; mixed legacy/v1.3 libraries remain compatible.",
+                  "Runtime footage, projects, indexes, model weights, virtual environments, logs, backups, and secrets are excluded."
+              ]
+}

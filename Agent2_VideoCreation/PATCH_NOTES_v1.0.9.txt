@@ -1,0 +1,14 @@
+FacelessRC Agent 2 v1.0.9 — Coverage Gap Fill Patch
+
+Changes:
+- If a matched segment still has >= 3.0 seconds uncovered, Agent 2 tries generally related B-roll before leaving a gap.
+- Gap fill reuses the existing retrieval index; it does not restart exhaustive retrieval.
+- At most 2 fallback candidates are judged with the fast no-thinking reranker.
+- Unused related footage is preferred before any repeat fallback.
+- Repeat fallback still obeys max 2 uses and repeat spacing.
+- Strict/high-specificity named product requirements remain strict.
+- 3.0s minimum / 8.0s maximum pacing remains unchanged.
+- Longer relevant clips remain preferred.
+- Timeline clips chosen by fallback carry gap_filler=true.
+
+This changes matching policy only. Visual planning, Whisper alignment, and cached clip embeddings remain reusable.

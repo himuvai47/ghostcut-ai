@@ -1,0 +1,14 @@
+Validation performed in build environment:
+- python -m unittest discover -s tests -q
+- 96 tests passed
+- python -m compileall video_creation_agent
+- PASS
+
+New v1.0.19 regression coverage:
+- deterministic paced ranges cover every aligned word exactly once
+- long-form planner prompts contain no word-id planning contract
+- compact batches classify fixed beats
+- malformed batches split recursively
+- single malformed beat falls back safely
+- tolerant mode aliases
+- generic CTA anchors cannot hijack the main brand context

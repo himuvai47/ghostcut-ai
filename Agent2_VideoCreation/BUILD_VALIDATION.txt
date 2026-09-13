@@ -1,0 +1,35 @@
+FacelessRC Agent 2 v1.0.0 — Build Validation
+
+Validated in build environment:
+- Python compile check: PASS
+- Unit/integration tests: 21/21 PASS
+- Agent 1 SQLite contract reader: PASS
+- Hybrid semantic/lexical/structured scoring: PASS
+- Ollama embedding HTTP contract mock: PASS
+- Structured face-gate HTTP contract mock: PASS
+- Face-visible hard rejection: PASS
+- Face result cache: PASS
+- Script/ASR word alignment: PASS
+- Missing-word interpolation: PASS
+- Clip usage max = 2 policy: PASS
+- Repeat spacing policy: PASS
+- Alternate source window on second use: PASS
+- End-to-end mock Agent1 DB -> face gate -> rerank -> timeline -> QC: PASS
+- Completed-segment matching resume (no rerank on second identical run): PASS
+
+Not runnable in the build container and therefore must be validated on the user's PC:
+- Real qwen3.5:9b editorial output quality
+- Real qwen2.5vl:7b dense face-safety behavior
+- Real nomic-embed-text retrieval quality on the 65-clip Agent 1 index
+- Real whisper.cpp CUDA/CPU binary and ggml-small.en timing on the user's narration
+- RTX 3070 model switching/residency behavior
+
+Architectural invariants:
+- no cloud/paid APIs
+- Agent 2 does not render
+- human face or uncertain face state is rejected
+- unused relevant clips precede filler; reasonable unused footage precedes repeat
+- max two uses per clip
+- no close repeat (default two-segment gap)
+- no suitable footage => no_match
+- timeline.json is the Phase 3 contract

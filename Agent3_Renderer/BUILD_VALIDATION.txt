@@ -1,0 +1,25 @@
+FacelessRC Agent 3 Renderer v1.0.0
+
+Validation performed in build environment:
+- Python compileall: PASS
+- Unit/integration tests: 26/26 PASS
+- Real FFmpeg integration: PASS
+  - landscape source normalization
+  - portrait source center-crop normalization
+  - 30 fps output
+  - video-only intermediate clips
+  - concat assembly
+  - narration mux
+  - final duration QC
+  - output video/audio stream QC
+  - clip-cache reuse on second run
+  - freeze-frame timeline gap fill
+- Supplied Agent 2 v1.0.9 timeline structure: PASS
+  - 6 visual segments
+  - 8 selected clips
+  - 0 timeline gaps
+  - render-plan frame coverage: 868/868 frames at 30 fps
+
+The build environment cannot access the user's Windows source media paths, so the supplied
+real timeline was validated/planned but not rendered here. RUN_AGENT3.ps1 performs full
+preflight against those source paths before rendering on the user's machine.

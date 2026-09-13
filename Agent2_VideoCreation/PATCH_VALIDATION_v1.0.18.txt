@@ -1,0 +1,7 @@
+Validation performed in clean v1.0.17-derived work tree:
+- python -m compileall: PASS
+- full pytest suite: 90 passed
+- exact massive-prefix regression: PASS (w00458 start is detected as unsafe; never stretched to w00001)
+- chunk coverage regression: PASS (all words covered exactly once)
+- long-form multi-chunk planning regression: PASS
+- CTA/generic context-anchor regression: PASS

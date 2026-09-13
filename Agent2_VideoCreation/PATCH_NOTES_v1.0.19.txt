@@ -1,0 +1,16 @@
+Agent 2 v1.0.19 - Compact Editorial Planner
+
+Why:
+Agent 2 v1.0.18 safely recovered from malformed Qwen planner JSON, but the long-form planner still asked Qwen to generate verbose segment objects and word ranges. On the real four-minute TAG Heuer script, 190-word and even ~95-word chunks repeatedly truncated or produced malformed JSON.
+
+What changed:
+- Long-form cut boundaries are now deterministic from Whisper-aligned words.
+- Target visual refresh remains about 8 seconds with a 3-10 second pacing envelope.
+- Qwen never generates word ids/ranges for long-form videos.
+- Qwen receives fixed beats in batches of up to 8 and returns only compact editorial decisions:
+  beat_id, mode, anchor, visual, optional entities.
+- Compact mode aliases are tolerant (for example filler -> brand_filler, topic -> thematic, exact -> literal).
+- Junk CTA anchors such as Tell me / comments / luxury counter are rejected.
+- Malformed compact batches split recursively; a single failed beat becomes intentional brand/topic filler.
+- Existing Editorial Freedom, visual-diversity, face-safety, matching, gap completion, and rendering contracts are unchanged.
+- Short-form scripts keep the proven legacy semantic planner.
